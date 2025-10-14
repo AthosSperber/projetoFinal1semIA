@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Enviar reclamação — Reclame Aqui Demo{% endblock %}
+{% block content %}
+  <form action="{{ url_for('submit') }}" method="post" novalidate>
+  <label for="nome">Nome completo *</label>
+  <input id="nome" name="nome" type="text" required>
+
+  <label for="email">Email (opcional)</label>
+  <input id="email" name="email" type="email">
+
+  <label for="empresa">Empresa *</label>
+  <input id="empresa" name="empresa" type="text" required>
+
+  <label for="titulo">Título da reclamação *</label>
+  <input id="titulo" name="titulo" type="text" required>
+
+  <label for="descricao">Descrição detalhada *</label>
+  <textarea id="descricao" name="descricao" required></textarea>
+
+  <button type="submit">Enviar reclamação</button>
+</form>
+
+{% endblock %}

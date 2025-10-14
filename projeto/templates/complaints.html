@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Reclamações recebidas — Reclame Aqui Demo{% endblock %}
+{% block content %}
+  <h2 style="margin-top:0;">Reclamações recentes</h2>
+
+  {% if complaints %}
+    {% for c in complaints %}
+      <div class="complaint">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong>{{ c.titulo }}</strong> — <span class="small">{{ c.empresa }}</span>
+            <div class="meta">Por <strong>{{ c.nome }}</strong> • {{ c.created_at }}</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="status">{{ c.status }}</div>
+            <div style="margin-top:6px;">
+              <a href="{{ url_for('complaint_detail', complaint_id=c.id) }}">Detalhes</a>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top:10px;">{{ c.descricao[:300] }}{% if c.descricao|length > 300 %}…{% endif %}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>Nenhuma reclamação registrada ainda.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}Reclame Aqui - Demo{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1 style="margin:0;">Reclame Aqui — Demo</h1>
+        <div class="small">Página de captura de reclamações</div>
+      </div>
+      <nav class="nav">
+        <a href="{{ url_for('index') }}">Enviar reclamação</a>
+        <a href="{{ url_for('list_complaints') }}">Ver reclamações</a>
+      </nav>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for cat, msg in messages %}
+          <div class="flash {{ cat }}">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+    <footer style="margin-top:18px; font-size:0.85rem; color:#777;">
+      Demo local — dados armazenados em <code>{{ data_file|default('complaints.json') }}</code>
+    </footer>
+  </div>
+</body>
+</html>

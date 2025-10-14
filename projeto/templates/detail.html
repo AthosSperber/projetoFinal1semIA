@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Detalhe da reclamação — Reclame Aqui Demo{% endblock %}
+{% block content %}
+  <h2 style="margin-top:0;">{{ complaint.titulo }}</h2>
+  <div class="meta">
+    Empresa: <strong>{{ complaint.empresa }}</strong> • Enviada por <strong>{{ complaint.nome }}</strong>
+    em {{ complaint.created_at }}
+  </div>
+  {% if complaint.email %}
+    <div class="meta">Email: {{ complaint.email }}</div>
+  {% endif %}
+  <div style="margin-top:12px; white-space:pre-wrap;">{{ complaint.descricao }}</div>
+
+  <div style="margin-top:18px;">
+    <a href="{{ url_for('list_complaints') }}">&larr; Voltar para lista</a>
+  </div>
+{% endblock %}
