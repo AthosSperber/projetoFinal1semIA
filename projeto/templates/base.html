@@ -81,7 +81,7 @@
         const currentScroll = window.scrollY;                           // posição atual da rolagem
         const headerHeight = header.offsetHeight;                       // altura do header em px
 
-        // ↓↓↓ ROLAR PARA BAIXO ↓↓↓
+        //  ROLAR PARA BAIXO
         // Se o usuário girar a rodinha pra baixo e ainda estiver no topo
         if (event.deltaY > 0 && currentScroll < formSection.offsetTop - headerHeight) {
           event.preventDefault();
@@ -93,7 +93,7 @@
           event.preventDefault();
 
           // Calcula a posição ideal pra rolar (carrossel inteiro visível)
-          const targetPosition = hero.offsetTop - headerHeight - 25; //  sobe um pouco além pra dar "respiro"
+          const targetPosition = hero.offsetTop - headerHeight - 25; //  sobe um pouco além 
 
           // Rola suavemente até o topo do carrossel
           window.scrollTo({
